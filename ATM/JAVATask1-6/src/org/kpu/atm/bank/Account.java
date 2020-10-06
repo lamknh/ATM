@@ -40,7 +40,7 @@ public class Account {
 	}
 	
 	public boolean updatePasswd(String oldPasswd, String newPasswd) {
-		if(!oldPasswd.equals(newPasswd)) {
+		if(!oldPasswd.equals(newPasswd) && oldPasswd.equals(strPassword)) {
 			strPassword = newPasswd;
 			return true;
 		}

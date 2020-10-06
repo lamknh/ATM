@@ -46,9 +46,6 @@ public class ATMachine {
 			if(accountArray[i].authenticate(id, pw)) {
 				System.out.printf(" 계좌 잔액: %d\n", accountArray[i].getnBalance());		
 			}
-			else {
-				System.out.println("틀린 비밀번호 입니다.");
-			}
 		}	
 	}
 	
@@ -66,9 +63,6 @@ public class ATMachine {
 				
 				System.out.printf(" 입금 후 잔액: %d\n", accountArray[i].deposit(money));
 				nMachineBalance += money;
-			}
-			else {
-				System.out.println("틀린 비밀번호 입니다.");
 			}
 		}
 	}
@@ -98,17 +92,20 @@ public class ATMachine {
 		String pw = scan.next();
 		
 		for(int i = 0; i < nCurrentAccountNum; i++) {
-			if(accountArray[i].authenticate(id, pw)) {
-				System.out.print(" 이체계좌 입력: ");
-				int idT = scan.nextInt();
-				System.out.print(" 이체금액 입력: ");
-				int money = scan.nextInt();
+			try {
+				if(accountArray[i].authenticate(id, pw)) {
+					System.out.print(" 이체계좌 입력: ");
+					int idT = scan.nextInt();
+					System.out.print(" 이체금액 입력: ");
+					int money = scan.nextInt();
 				
+					accountArray[i].widraw(money);
+					accountArray[idT-BASE_ACCOUNT_ID].deposit(money);
+					System.out.printf(" 현재 잔액: %d\n", accountArray[i].getnBalance());
+					System.out.println(" 계좌 이체를 완료하였습니다.");
+				}
+			} catch(Exception e) {
 				System.out.println(" 이체 계좌를 다시 확인하세요.");
-				accountArray[i].widraw(money);
-				accountArray[idT-BASE_ACCOUNT_ID].deposit(money);
-				System.out.printf(" 현재 잔액: %d\n", accountArray[i].getnBalance());
-				System.out.println(" 계좌 이체를 완료하였습니다.");
 			}
 		}
 	}

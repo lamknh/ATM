@@ -11,7 +11,7 @@ public class AtmMain {
 		
 		Scanner scan = new Scanner(System.in);
 		
-		loop : while(true) {
+		while(true) {
 			atm.displayMenu();
 			System.out.print(" 메뉴를 선택하세요  >> ");
 			

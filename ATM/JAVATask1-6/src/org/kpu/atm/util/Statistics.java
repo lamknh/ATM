@@ -1,19 +1,16 @@
 package org.kpu.atm.util;
-
 import org.kpu.atm.bank.Account;
 
 public class Statistics {
 	public static int sum(Account [] account, int size) { //ÃÑ¾×
-		int sum = 0;
-		
+		int sum = 0;	
 		for (int i=0; i < size; i++) {
 			sum += account[i].getnBalance();
 		}
 		return sum;
 	}
 	public static double average(Account [] account, int size) {	//Æò±Õ
-		int sum = 0;
-		
+		int sum = 0;	
 		for (int i=0; i < size; i++) {
 			sum += (double)account[i].getnBalance();
 		}
@@ -21,8 +18,7 @@ public class Statistics {
 		return avr;
 	}
 	public static int max(Account [] account, int size) {	//ÃÖ°í
-		int max = 0;
-		
+		int max = 0;	
 		for (int i=0; i < size; i++) {
 			if (max < account[i].getnBalance()) {
 				max = account[i].getnBalance();
@@ -34,8 +30,8 @@ public class Statistics {
 		for (int i = 0; i < size; i++) {
 			for(int j = 1; j < size; j++) {
 				if(account[j-1].getnBalance() < account[j].getnBalance()) {
-					Account tmpAcc = account[i];
-					account[i] = account[j];
+					Account tmpAcc = account[j-1];
+					account[j-1] = account[j];
 					account[j] = tmpAcc; // ¹öºí Á¤·Ä
 				}
 			}

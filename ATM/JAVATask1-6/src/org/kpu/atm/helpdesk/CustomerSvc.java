@@ -23,11 +23,8 @@ public class CustomerSvc {
 		String pw = scan.next();
 		
 		for(int i = 0; i < nCurrentAcctNum; i++) {
-			if(acctArray[i].updatePasswd(oldPw, pw)) {
-				System.out.println(" 비밀번호를 수정하였습니다.");				
-			}
-			else {
-				System.out.println("동일한 비밀번호를 입력하셨습니다.");
+			if(i == id-100 && acctArray[i].updatePasswd(oldPw, pw)) {
+				System.out.println(" 비밀번호를 수정하였습니다.");
 			}
 		}
 	}
